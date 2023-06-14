@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "946099783231",
+    "project_id": "euphoria-4c880",
+    "storage_bucket": "euphoria-4c880.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946099783231:android:d1c3ab386d4ec773461a8a",
+        "android_client_info": {
+          "package_name": "com.example.notesdroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946099783231-np0b6i7p51nne7qpd0ses758ufdh34l1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notesdroid",
+            "certificate_hash": "cc58c832b6bdcd3f3eb1d6f1e5ab53d440293945"
+          }
+        },
+        {
+          "client_id": "946099783231-c0baa0baeeu8b5tolv1uluk7qd81aqtq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdB1Az_nZP761jeJCYpPYtLV2uC3j3So0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946099783231-c0baa0baeeu8b5tolv1uluk7qd81aqtq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
