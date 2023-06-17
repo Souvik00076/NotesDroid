@@ -9,4 +9,6 @@
     <string name="login">Login</string>
     <string name="signUp">Sign Up</string>
     <string name="password_confirm">Confirm Password</string>
+    <string name="click_to_login">Click to login</string>
+    <string name="click_to_register">Click to Register</string>
 </resources>

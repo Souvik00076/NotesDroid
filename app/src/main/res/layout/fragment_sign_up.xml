@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Login"
+    tools:context=".fragments.SignUp"
     android:background="@drawable/app_background">
 
     <LinearLayout
@@ -54,6 +54,12 @@
             android:textAlignment="center"
             android:textColorHint="@color/white"
             android:textSize="@dimen/notes_text_size" />
+        
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/signUp_button"
@@ -66,6 +72,17 @@
             android:layout_marginEnd="@dimen/widgets_margin_end"
             android:text="@string/signUp"
             android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginNow"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/widgets_margin_top"
+            android:textSize="@dimen/notes_text_size"
+            android:text="@string/click_to_login"/>
+
     </LinearLayout>
 
 </FrameLayout>
