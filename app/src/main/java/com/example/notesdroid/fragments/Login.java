@@ -11,11 +11,15 @@ import android.view.ViewGroup;
 import com.example.notesdroid.R;
 
 public class Login extends Fragment {
-
+    //TODO -1 Declare all the edit texts and button specified here with fruitful name
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        //TODO -2 Inflate the root view
+        // TODO -4 call the init method by passing root view
+
+        return root;
     }
+
+    //TODO -3 Define a method as init that takes one parameter of view type and define the widgets
 }

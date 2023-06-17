@@ -42,7 +42,7 @@
             android:textSize="@dimen/notes_text_size" />
 
         <EditText
-            android:id="@+id/password_confirm"
+            android:id="@+id/password_confirm_et"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_recomd"
             android:layout_marginStart="@dimen/widgets_margin_start"
