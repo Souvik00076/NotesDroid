@@ -1,5 +1,6 @@
 package com.example.notesdroid.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.notesdroid.MainActivity;
 import com.example.notesdroid.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +31,13 @@ public class SignUp extends Fragment {
     private static final String USER_EXIST_MSG = "User already exist";
     private FirebaseAuth auth;
     private static final String VERIFICATION_PROBLEM_MSG = "Problem with verification mail";
+    private MainActivity activity;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        activity = (MainActivity) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,8 +91,9 @@ public class SignUp extends Fragment {
         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                activity.addFragment(new MainPage());
                 if (task.isSuccessful()) {
-                    //create new fragment
+
                 } else {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null) user.delete();

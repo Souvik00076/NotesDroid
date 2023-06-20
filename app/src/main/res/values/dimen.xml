@@ -12,4 +12,6 @@
     <dimen name="widgets_padding">10dp</dimen>
     <dimen name="notes_text_size">17sp</dimen>
     <dimen name="layout_padding">30dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
 </resources>

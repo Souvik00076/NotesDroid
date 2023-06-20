@@ -1,5 +1,6 @@
 package com.example.notesdroid.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.notesdroid.MainActivity;
 import com.example.notesdroid.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +24,14 @@ public class Login extends Fragment {
     private EditText emailEt, passwordEt;
     private Button loginButton;
     private FirebaseAuth auth;
+    private MainActivity activity;
+    private TextView dhasu;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        activity = (MainActivity) context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +52,12 @@ public class Login extends Fragment {
                 //TODO 3 call the loginUser method with email and password
             }
         });
+        dhasu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.addFragment(new SignUp());
+            }
+        });
         return root;
     }
 
@@ -48,7 +65,12 @@ public class Login extends Fragment {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
+                activity.addFragment(new MainPage());
+                    if(task.isSuccessful()){
+                        //goto new Fragment
+                    }else{
+                        //TODO 4- Show that invalid userName and password
+                    }
             }
         });
     }
@@ -57,6 +79,7 @@ public class Login extends Fragment {
         emailEt = root.findViewById(R.id.email_et);
         passwordEt = root.findViewById(R.id.password_et);
         loginButton = root.findViewById(R.id.login_button);
+        dhasu = root.findViewById(R.id.dhasu);
         auth = FirebaseAuth.getInstance();
     }
 }

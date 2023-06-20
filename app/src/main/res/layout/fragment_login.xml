@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Login"
-    android:background="@drawable/app_background">
+    android:background="@drawable/app_background"
+    tools:context=".fragments.Login">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_gravity="center"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/layout_padding">
 
@@ -45,13 +45,24 @@
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/widgets_design"
+            android:layout_gravity="center_horizontal"
             android:layout_marginStart="@dimen/widgets_margin_start"
             android:layout_marginTop="@dimen/widgets_margin_top"
             android:layout_marginEnd="@dimen/widgets_margin_end"
+            android:background="@drawable/widgets_design"
             android:text="@string/login"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/dhasu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="@dimen/layout_height_recomd"
+            android:text="@string/dont_have_acnt_msg"
             android:textColor="@color/white"
-            android:layout_gravity="center_horizontal"/>
+            android:textSize="@dimen/notes_text_size"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </FrameLayout>
