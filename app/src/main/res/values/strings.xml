@@ -10,4 +10,5 @@
     <string name="signUp">Sign Up</string>
     <string name="password_confirm">Confirm Password</string>
     <string name="dont_have_acnt_msg">Don\'t have an account? SignUP!!!</string>
+    <string name="decription_hint">Keep Writing\n</string>
 </resources>

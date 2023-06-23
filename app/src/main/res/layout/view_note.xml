@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.circularreveal.cardview.CircularRevealCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/app_background"
+
     android:longClickable="true"
     app:cardCornerRadius="@dimen/card_corner_radius"
     app:cardElevation="@dimen/card_elevation"
@@ -11,6 +11,7 @@
     app:cardUseCompatPadding="true">
 
     <LinearLayout
+        android:background=" @drawable/app_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin_button_bottom"
@@ -20,6 +21,7 @@
             android:id="@+id/title_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/title_hint"
             android:layout_marginStart="@dimen/widgets_margin_start"
             android:layout_marginTop="@dimen/widgets_margin_top"
             android:layout_marginEnd="@dimen/widgets_margin_end"
@@ -29,6 +31,7 @@
 
         <TextView
             android:id="@+id/description_id"
+            android:hint="@string/decription_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/widgets_margin_start"
@@ -40,4 +43,4 @@
     </LinearLayout>
 
 
-</com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+</androidx.cardview.widget.CardView>

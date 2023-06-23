@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.notesdroid.MainActivity;
 import com.example.notesdroid.R;
@@ -19,13 +20,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends Fragment {
+    private static final String NETWORK_ISSUE = "Could not be signed in.Try again later";
+    private static final String EMAIL_NOT_VERIFIED_MSG = "Email not verified.Please Verify Email!!";
     private EditText emailEt, passwordEt;
     private Button loginButton;
     private FirebaseAuth auth;
     private MainActivity activity;
     private TextView dhasu;
+    private static final String EMAIL_EMPTY_MSG = "Email field cannot empty";
+    private static final String PASSWORD_EMPTY_MSG = "Password field cannot be empty";
+    private static final String INVALID_EMAIL_PASS_MSG = "Invalid Email/Password";
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -44,12 +51,15 @@ public class Login extends Fragment {
                 String email = emailEt.getText().toString();
                 String password = passwordEt.getText().toString();
                 if (email.isEmpty()) {
-                    //TODO -1 handle it
+                    Toast.makeText(getContext(), EMAIL_EMPTY_MSG, Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (password.isEmpty()) {
-                    //TODO -2 handle it
+                    Toast.makeText(getContext(), PASSWORD_EMPTY_MSG, Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                //TODO 3 call the loginUser method with email and password
+
+                loginUser(email, password);
             }
         });
         dhasu.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +76,16 @@ public class Login extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 activity.addFragment(new MainPage());
-                    if(task.isSuccessful()){
-                        //goto new Fragment
-                    }else{
-                        //TODO 4- Show that invalid userName and password
-                    }
+                if (task.isSuccessful()) {
+                    FirebaseUser user = auth.getCurrentUser();
+                    if (user != null && user.isEmailVerified())
+                       // activity.addFragment(new MainPage());
+                        Toast.makeText(activity, "hi", Toast.LENGTH_SHORT).show();
+                    else if (user != null)
+                        Toast.makeText(getContext(), EMAIL_NOT_VERIFIED_MSG, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), INVALID_EMAIL_PASS_MSG, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -3,10 +3,10 @@ package com.example.notesdroid.models;
 public class Note {
     private String title, description, imageUri;
 
-    public Note(String title, String description, String imageUri) {
-        this.title = title;
+    public Note(String description) {
+       // this.title = title;
         this.description = description;
-        this.imageUri = imageUri;
+        //this.imageUri = imageUri;
     }
 
     public String getTitle() {
