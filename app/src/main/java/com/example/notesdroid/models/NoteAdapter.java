@@ -25,16 +25,17 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     public NoteAdapter.NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.view_note, parent, false);
-        NoteHolder holder = new NoteHolder(view);
-        return holder;
+        return new NoteHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull NoteAdapter.NoteHolder holder, int position) {
-        String title = list.get(position).getTitle();
+
         String description = list.get(position).getDescription();
-        holder.titleView.setText(title);
+        long time = Long.parseLong(list.get(position).getTime());
         holder.descriptionView.setText(description);
+        holder.timeView.setText("7.12.12");
     }
 
     @Override
@@ -43,12 +44,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     }
 
     class NoteHolder extends RecyclerView.ViewHolder {
-        public TextView titleView, descriptionView;
+        public TextView descriptionView, timeView;
 
         public NoteHolder(@NonNull View itemView) {
             super(itemView);
-            titleView = itemView.findViewById(R.id.title_id);
-            descriptionView = itemView.findViewById(R.id.description_id);
+            descriptionView = itemView.findViewById(R.id.descript_tv);
+            timeView = itemView.findViewById(R.id.time_tv);
         }
     }
 }

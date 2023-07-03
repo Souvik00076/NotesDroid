@@ -1,20 +1,16 @@
 package com.example.notesdroid.models;
 
 public class Note {
-    private String title, description, imageUri;
-
-    public Note(String description) {
-       // this.title = title;
+    private static long id=0;
+    private String description, time;
+    private final long noteId;
+    public Note(String description, String time) {
         this.description = description;
-        //this.imageUri = imageUri;
+        this.time = time;
+        noteId=id++;
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public long getNoteId() {
+        return noteId;
     }
 
     public String getDescription() {
@@ -25,11 +21,11 @@ public class Note {
         this.description = description;
     }
 
-    public String getImageUri() {
-        return imageUri;
+    public String getTime() {
+        return time;
     }
 
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
+    public void setTime(String time) {
+        this.time = time;
     }
 }

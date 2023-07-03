@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,11 +18,11 @@
         android:layout_marginEnd="@dimen/widgets_margin_end"
         android:layout_marginBottom="@dimen/margin_button_bottom"
         android:background="@drawable/widgets_design"
-        android:gravity="center"
+        android:gravity="start"
         android:hint="@string/decription_hint"
         android:minHeight="@dimen/layout_height_recomd"
         android:padding="@dimen/widgets_padding"
         android:textColorHint="@color/white"
         android:textSize="@dimen/notes_text_size" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

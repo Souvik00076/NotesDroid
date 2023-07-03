@@ -9,7 +9,7 @@
     <dimen name="widgets_margin_top">16dp</dimen>
     <dimen name="widgets_margin_end">16dp</dimen>
     <dimen name="widgets_margin_start">16dp</dimen>
-    <dimen name="widgets_padding">10dp</dimen>
+    <dimen name="widgets_padding">15dp</dimen>
     <dimen name="notes_text_size">17sp</dimen>
     <dimen name="layout_padding">30dp</dimen>
     <dimen name="card_corner_radius">10dp</dimen>

@@ -1,7 +1,9 @@
 package com.example.notesdroid.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.notesdroid.MainActivity;
 import com.example.notesdroid.R;
 import com.example.notesdroid.models.Note;
 import com.example.notesdroid.models.NoteAdapter;
@@ -25,6 +28,14 @@ public class MainPage extends Fragment {
     private ArrayList<Note> list;
     private FloatingActionButton addNotes;
 
+    private MainActivity activity;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        activity = (MainActivity) context;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,13 +44,14 @@ public class MainPage extends Fragment {
         addNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                activity.addFragment(new Page());
             }
         });
         return root;
     }
 
     private void init(View root) {
+        list = new ArrayList<>();
         noteView = root.findViewById(R.id.notes_view);
         addNotes = root.findViewById(R.id.add_notes);
 

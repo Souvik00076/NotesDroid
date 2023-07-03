@@ -79,7 +79,7 @@ public class Login extends Fragment {
                 if (task.isSuccessful()) {
                     FirebaseUser user = auth.getCurrentUser();
                     if (user != null && user.isEmailVerified())
-                       // activity.addFragment(new MainPage());
+
                         Toast.makeText(activity, "hi", Toast.LENGTH_SHORT).show();
                     else if (user != null)
                         Toast.makeText(getContext(), EMAIL_NOT_VERIFIED_MSG, Toast.LENGTH_SHORT).show();
