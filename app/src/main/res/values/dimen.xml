@@ -15,4 +15,5 @@
     <dimen name="card_corner_radius">10dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="background_radius">300dp</dimen>
+    <dimen name="_48dp">48dp</dimen>
 </resources>

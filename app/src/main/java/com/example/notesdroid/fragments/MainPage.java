@@ -28,13 +28,6 @@ public class MainPage extends Fragment {
     private ArrayList<Note> list;
     private FloatingActionButton addNotes;
 
-    private MainActivity activity;
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        activity = (MainActivity) context;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +37,10 @@ public class MainPage extends Fragment {
         addNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.addFragment(new Page());
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction().replace(R.id.container,
+                                new Page()).addToBackStack("Note Add")
+                        .commit();
             }
         });
         return root;
