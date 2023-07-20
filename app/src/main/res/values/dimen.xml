@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="layout_height_recomd">48dp</dimen>
+    <dimen name="layout_height_recomd">70dp</dimen>
     <dimen name="layout_width_recomd">48dp</dimen>
     <dimen name="margin_button_bottom">25dp</dimen>
     <dimen name="margin_button_end">25dp</dimen>
