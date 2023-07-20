@@ -1,16 +1,11 @@
 package com.example.notesdroid.models;
 
 public class Note {
-    private static long id=0;
-    private String description, time;
-    private final long noteId;
-    public Note(String description, String time) {
+    private String description;
+    private long timeStamp;
+    public Note(String description,long timeStamp) {
         this.description = description;
-        this.time = time;
-        noteId=id++;
-    }
-    public long getNoteId() {
-        return noteId;
+        this.timeStamp=timeStamp;
     }
 
     public String getDescription() {
@@ -21,11 +16,11 @@ public class Note {
         this.description = description;
     }
 
-    public String getTime() {
-        return time;
+    public long getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 }

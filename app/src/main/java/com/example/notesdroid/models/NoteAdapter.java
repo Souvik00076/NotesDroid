@@ -33,7 +33,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     public void onBindViewHolder(@NonNull NoteAdapter.NoteHolder holder, int position) {
 
         String description = list.get(position).getDescription();
-        long time = Long.parseLong(list.get(position).getTime());
+        //long time = Long.parseLong(list.get(position).getTime());
         holder.descriptionView.setText(description);
         holder.timeView.setText("7.12.12");
     }
