@@ -3,11 +3,14 @@ package com.example.notesdroid.models;
 public class Note {
     private String description;
     private long timeStamp;
-    public Note(String description,long timeStamp) {
-        this.description = description;
-        this.timeStamp=timeStamp;
-    }
 
+    public Note(String description) {
+        this.description = description;
+        this.timeStamp = System.currentTimeMillis() / 1000;
+    }
+    public Note(){
+
+    }
     public String getDescription() {
         return description;
     }

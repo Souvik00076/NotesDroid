@@ -1,11 +1,9 @@
 package com.example.notesdroid.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,11 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.notesdroid.MainActivity;
 import com.example.notesdroid.R;
 import com.example.notesdroid.models.Note;
 import com.example.notesdroid.models.NoteAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -25,9 +28,9 @@ public class MainPage extends Fragment {
 
     private RecyclerView noteView;
     private NoteAdapter adapter;
-    private ArrayList<Note> list;
+    private ArrayList<Note> dataSet;
     private FloatingActionButton addNotes;
-
+    private DatabaseReference reference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,15 +46,35 @@ public class MainPage extends Fragment {
                         .commit();
             }
         });
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Note> newDataSet = new ArrayList<>();
+                for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                    Note note = childSnapshot.getValue(Note.class);
+                    newDataSet.add(note);
+                }
+                adapter.setDataSet(newDataSet);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         return root;
     }
 
     private void init(View root) {
-        list = new ArrayList<>();
+        dataSet = new ArrayList<>();
         noteView = root.findViewById(R.id.notes_view);
         addNotes = root.findViewById(R.id.add_notes);
-
-        adapter = new NoteAdapter(list);
+        reference = FirebaseDatabase.getInstance().
+                getReference(FirebaseAuth.getInstance().getCurrentUser().
+                        getEmail().
+                        replace(".", ""));
+        adapter = new NoteAdapter(dataSet);
         noteView.setAdapter(adapter);
         noteView.setLayoutManager(new LinearLayoutManager(getContext()));
     }

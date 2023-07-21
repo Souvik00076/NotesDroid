@@ -14,16 +14,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.notesdroid.R;
 import com.example.notesdroid.models.Note;
 import com.example.notesdroid.models.UserCred;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Page extends Fragment {
 
     private EditText descriptEt;
     private AppCompatImageView buttonBack, buttonCheck;
+    private DatabaseReference reference;
 
     @Nullable
     @Override
@@ -34,14 +43,24 @@ public class Page extends Fragment {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                requireActivity().getSupportFragmentManager()
+                        .popBackStack();
+            }
+        });
+        buttonCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 final String description = descriptEt.getText().toString();
-                Note note = new Note(description, System.currentTimeMillis() / 1000);
-                UserCred user = UserCred.getInstance();
-                user.getReference().setValue(note).addOnSuccessListener(new OnSuccessListener<Void>() {
+                if (description.isEmpty()) return;
+                Note note = new Note(description);
+                final String key = reference.push().getKey();
+                reference.child(key).setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {
-                        requireActivity().getSupportFragmentManager()
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) requireActivity().getSupportFragmentManager()
                                 .popBackStack();
+                        else
+                            Toast.makeText(requireActivity(), "Something error happened", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -50,7 +69,8 @@ public class Page extends Fragment {
     }
 
     private void init(final View root) {
-
+        reference = FirebaseDatabase.getInstance().getReference
+                (FirebaseAuth.getInstance().getCurrentUser().getEmail().replace(".", ""));
         descriptEt = root.findViewById(R.id.description_et);
         buttonBack = root.findViewById(R.id.button_back);
         buttonCheck = root.findViewById(R.id.button_check);

@@ -38,6 +38,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
         holder.timeView.setText("7.12.12");
     }
 
+    public void setDataSet(ArrayList<Note> dataSet) {
+        this.list = dataSet;
+    }
+
     @Override
     public int getItemCount() {
         return list.size();
