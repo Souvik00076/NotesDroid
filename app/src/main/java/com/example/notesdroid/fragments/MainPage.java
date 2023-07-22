@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MainPage extends Fragment {
+public class MainPage extends Fragment implements NoteAdapter.rvListener {
 
     private RecyclerView noteView;
     private NoteAdapter adapter;
@@ -74,8 +74,25 @@ public class MainPage extends Fragment {
                 getReference(FirebaseAuth.getInstance().getCurrentUser().
                         getEmail().
                         replace(".", ""));
-        adapter = new NoteAdapter(dataSet);
+        adapter = new NoteAdapter(dataSet, requireActivity());
         noteView.setAdapter(adapter);
         noteView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    @Override
+    public void onClick(Note note) {
+        Page page = new Page();
+        Bundle args = new Bundle();
+        args.putSerializable("data", note);
+        page.setArguments(args);
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction().replace(R.id.container,
+                        page).addToBackStack("Note Add")
+                .commit();
+    }
+
+    @Override
+    public void onDelete() {
+
     }
 }
