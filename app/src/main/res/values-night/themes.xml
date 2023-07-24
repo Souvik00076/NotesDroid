@@ -4,4 +4,38 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+    <!-- For Dark Mode -->
+    <!-- app background -->
+    <style name="SCREEN">
+        <item name="android:background">@color/appBackgroundColorDark</item>
+    </style>
+
+    <!-- text color -->
+    <style name="TEXT">
+        <item name="android:background">#00FFFFFF</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- text color for login and signup -->
+    <style name="TEXT2">
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- add button color -->
+    <style name="ADDBUTTON">
+        <item name="android:tint">@color/floatingActionButtonColorLight</item>
+        <item name="android:textColor">@color/floatingActionButtonColorLight</item>
+        <item name="android:backgroundTint">@color/floatingActionButtonColorDark</item>
+    </style>
+
+    <!-- login & signup page -->
+    <style name="LOGIN">
+        <item name="android:background">@drawable/loginbgdark</item>
+    </style>
+    <style name="SIGNUP">
+        <item name="android:background">@drawable/signupbgdark</item>
+    </style>
+
 </resources>

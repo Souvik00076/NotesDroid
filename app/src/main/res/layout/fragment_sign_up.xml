@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SignUp"
-    android:background="@drawable/signupbg">
+    style="@style/SIGNUP">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:id="@+id/email_et"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_recomd"
+            style="@style/TEXT2"
             android:layout_marginStart="@dimen/widgets_margin_start"
             android:layout_marginTop="@dimen/widgets_margin_top"
             android:layout_marginEnd="@dimen/widgets_margin_end"
@@ -30,6 +31,7 @@
             android:id="@+id/password_et"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_recomd"
+            style="@style/TEXT2"
             android:layout_marginStart="@dimen/widgets_margin_start"
             android:layout_marginTop="@dimen/widgets_margin_top"
             android:layout_marginEnd="@dimen/widgets_margin_end"
@@ -43,6 +45,7 @@
             android:id="@+id/password_confirm_et"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_height_recomd"
+            style="@style/TEXT2"
             android:layout_marginStart="@dimen/widgets_margin_start"
             android:layout_marginTop="@dimen/widgets_margin_top"
             android:layout_marginEnd="@dimen/widgets_margin_end"
@@ -57,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonbg"
-            android:textColor="@color/white"
+            style="@style/ADDBUTTON"
             android:layout_marginStart="@dimen/widgets_margin_start"
             android:layout_marginTop="@dimen/widgets_margin_top"
             android:layout_marginEnd="@dimen/widgets_margin_end"

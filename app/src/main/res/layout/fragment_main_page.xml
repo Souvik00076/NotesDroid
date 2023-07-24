@@ -3,21 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/index_background"
+    style="@style/SCREEN"
     tools:context=".fragments.MainPage">
 
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TEXT"
+        android:text="@string/appTitle"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppinbold"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/layout_padding" />
+        android:padding="@dimen/layout_padding"
+        android:layout_below="@+id/appName"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/ADDBUTTON"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:src="@drawable/plussign"
         android:layout_marginEnd="@dimen/widgets_margin_end"
         android:layout_marginBottom="@dimen/margin_button_bottom"
         android:minWidth="@dimen/layout_width_recomd"
