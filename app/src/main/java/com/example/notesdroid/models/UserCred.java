@@ -9,7 +9,6 @@ public class UserCred {
     private static UserCred cred = null;
     private FirebaseUser user;
     private DatabaseReference reference;
-
     private UserCred() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
@@ -17,12 +16,10 @@ public class UserCred {
         String emailKey = userEmail.replace(".", "");
         reference = FirebaseDatabase.getInstance().getReference().child("Users/" + emailKey);
     }
-
     public static UserCred getInstance() {
         if (cred == null) cred = new UserCred();
         return cred;
     }
-
     public FirebaseUser getUser() {
         return user;
     }

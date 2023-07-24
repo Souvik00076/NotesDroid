@@ -34,13 +34,20 @@ public class Page extends Fragment {
     private EditText descriptEt;
     private Button buttonBack, buttonCheck;
     private DatabaseReference reference;
+    private Note note = null;
+    private String key = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_page, container, false);
-
-        init(root);//profile change error resolved
+        init(root);
+        Bundle args = getArguments();
+        if (args != null) {
+            note = (Note) args.getSerializable("data");
+            descriptEt.setText(note.getDescription());
+            key = note.getId();
+        }
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,8 +60,9 @@ public class Page extends Fragment {
             public void onClick(View view) {
                 final String description = descriptEt.getText().toString();
                 if (description.isEmpty()) return;
-                Note note = new Note(description);
-                final String key = reference.push().getKey();
+                if(key==null)
+                    key = reference.push().getKey();
+                Note note = new Note(description, key);
                 reference.child(key).setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
