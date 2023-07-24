@@ -4,47 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/index_background"
+    style="@style/SCREEN"
     android:orientation="vertical"
     tools:context=".fragments.Page">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <Button
         android:id="@+id/button_back"
         android:layout_width="@dimen/_48dp"
         android:layout_height="@dimen/_48dp"
+        style="@style/ADDBUTTON"
         android:layout_marginStart="@dimen/_10dp"
         android:layout_marginTop="@dimen/_10dp"
-        android:src="@drawable/back_button"
+        android:background="@drawable/back_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <Button
         android:id="@+id/button_check"
         android:layout_width="@dimen/_48dp"
         android:layout_height="@dimen/_48dp"
+        style="@style/ADDBUTTON"
         android:layout_marginTop="@dimen/_10dp"
         android:layout_marginEnd="@dimen/_10dp"
-        android:src="@drawable/button_check"
+        android:background="@drawable/button_check"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/description_et"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/widgets_design"
         android:layout_marginStart="@dimen/widgets_margin_start"
         android:layout_marginTop="@dimen/widgets_margin_top"
         android:layout_marginEnd="@dimen/widgets_margin_end"
         android:layout_marginBottom="@dimen/margin_button_bottom"
-        android:background="@drawable/widgets_design"
-        android:gravity="start"
-        android:hint="@string/decription_hint"
-        android:minHeight="@dimen/layout_height_recomd"
-
-        android:padding="@dimen/widgets_padding"
-        android:textColorHint="@color/black"
-        android:textSize="@dimen/notes_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_back" />
+        app:layout_constraintTop_toBottomOf="@+id/button_back" >
+
+
+        <EditText
+            android:id="@+id/noteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/trans"
+            android:fontFamily="@font/poppinbold"
+            android:hint="@string/title_hint"
+            android:textColorHint="@color/black"
+            android:paddingStart="@dimen/titleNotePadding"
+            android:paddingTop="@dimen/titleNotePadding"
+            android:textSize="25sp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/noteTitle">
+
+            <EditText
+                android:id="@+id/description_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:fontFamily="@font/poppinstegular"
+                android:hint="@string/decription_hint"
+                android:minHeight="@dimen/layout_height_recomd"
+                android:paddingStart="@dimen/titleNotePadding"
+                android:background="@color/trans"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/notes_text_size"
+                android:scrollbars="vertical" />
+
+        </ScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

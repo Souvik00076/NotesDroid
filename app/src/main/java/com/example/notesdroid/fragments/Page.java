@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,7 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Page extends Fragment {
 
     private EditText descriptEt;
-    private AppCompatImageView buttonBack, buttonCheck;
+    private Button buttonBack, buttonCheck;
     private DatabaseReference reference;
     private Note note = null;
     private String key = null;
