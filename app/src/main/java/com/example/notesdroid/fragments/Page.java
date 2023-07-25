@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class Page extends Fragment {
             note = (Note) args.getSerializable("data");
             descriptEt.setText(note.getDescription());
             key = note.getId();
+            if(key==null) Log.i("Key is : "," null");
         }
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +64,7 @@ public class Page extends Fragment {
                 if (description.isEmpty()) return;
                 if(key==null)
                     key = reference.push().getKey();
-                Note note = new Note(description, key);
+                Note note = new Note(description, key,System.currentTimeMillis() / 1000);
                 reference.child(key).setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

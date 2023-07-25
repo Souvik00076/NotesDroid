@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class MainPage extends Fragment implements NoteAdapter.rvListener {
 
@@ -54,6 +57,7 @@ public class MainPage extends Fragment implements NoteAdapter.rvListener {
                     Note note = childSnapshot.getValue(Note.class);
                     newDataSet.add(note);
                 }
+                Collections.reverse(newDataSet);
                 adapter.setDataSet(newDataSet);
                 adapter.notifyDataSetChanged();
             }
@@ -74,7 +78,7 @@ public class MainPage extends Fragment implements NoteAdapter.rvListener {
                 getReference(FirebaseAuth.getInstance().getCurrentUser().
                         getEmail().
                         replace(".", ""));
-        adapter = new NoteAdapter(dataSet, requireActivity());
+        adapter = new NoteAdapter(dataSet, this);
         noteView.setAdapter(adapter);
         noteView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
@@ -84,6 +88,7 @@ public class MainPage extends Fragment implements NoteAdapter.rvListener {
         Page page = new Page();
         Bundle args = new Bundle();
         args.putSerializable("data", note);
+        Log.i("key", note.getId());
         page.setArguments(args);
         requireActivity().getSupportFragmentManager()
                 .beginTransaction().replace(R.id.container,

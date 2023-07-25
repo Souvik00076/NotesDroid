@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notesdroid.R;
+import com.example.notesdroid.fragments.MainPage;
 
 import java.util.ArrayList;
 
@@ -19,13 +21,15 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
         void onDelete();
     }
+
     private rvListener listener;
     private ArrayList<Note> list;
 
-    public NoteAdapter(ArrayList<Note> list, Context context) {
+    public NoteAdapter(ArrayList<Note> list, Fragment context) {
         this.list = list;
         listener = (rvListener) context;
     }
+
     @NonNull
     @Override
     public NoteAdapter.NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,7 +71,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
 
         @Override
         public void onClick(View view) {
-                listener.onClick(list.get(getAdapterPosition()));
+            listener.onClick(list.get(getAdapterPosition()));
         }
     }
 }

@@ -2,17 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/SCREEN"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/SCREEN"
     android:orientation="vertical"
     tools:context=".fragments.Page">
 
     <Button
         android:id="@+id/button_back"
+        style="@style/ADDBUTTON"
         android:layout_width="@dimen/_48dp"
         android:layout_height="@dimen/_48dp"
-        style="@style/ADDBUTTON"
         android:layout_marginStart="@dimen/_10dp"
         android:layout_marginTop="@dimen/_10dp"
         android:background="@drawable/back_button"
@@ -21,9 +21,9 @@
 
     <Button
         android:id="@+id/button_check"
+        style="@style/ADDBUTTON"
         android:layout_width="@dimen/_48dp"
         android:layout_height="@dimen/_48dp"
-        style="@style/ADDBUTTON"
         android:layout_marginTop="@dimen/_10dp"
         android:layout_marginEnd="@dimen/_10dp"
         android:background="@drawable/button_check"
@@ -33,53 +33,37 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/widgets_design"
         android:layout_marginStart="@dimen/widgets_margin_start"
         android:layout_marginTop="@dimen/widgets_margin_top"
         android:layout_marginEnd="@dimen/widgets_margin_end"
         android:layout_marginBottom="@dimen/margin_button_bottom"
+        android:background="@drawable/widgets_design"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_back" >
+        app:layout_constraintTop_toBottomOf="@+id/button_back">
 
-
-        <EditText
-            android:id="@+id/noteTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/trans"
-            android:fontFamily="@font/poppinbold"
-            android:hint="@string/title_hint"
-            android:textColorHint="@color/black"
-            android:paddingStart="@dimen/titleNotePadding"
-            android:paddingTop="@dimen/titleNotePadding"
-            android:textSize="25sp" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/noteTitle">
+            android:layout_height="match_parent">
 
             <EditText
                 android:id="@+id/description_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="start"
+                android:background="@color/trans"
                 android:fontFamily="@font/poppinstegular"
+                android:gravity="start"
                 android:hint="@string/decription_hint"
                 android:minHeight="@dimen/layout_height_recomd"
-                android:paddingStart="@dimen/titleNotePadding"
-                android:background="@color/trans"
+                android:padding="@dimen/titleNotePadding"
+                android:scrollbars="vertical"
                 android:textColorHint="@color/black"
-                android:textSize="@dimen/notes_text_size"
-                android:scrollbars="vertical" />
+                android:textSize="@dimen/notes_text_size" />
 
         </ScrollView>
 
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

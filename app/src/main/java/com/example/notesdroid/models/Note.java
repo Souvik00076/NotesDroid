@@ -7,10 +7,10 @@ public class Note implements Serializable {
     private long timeStamp;
     private String id;
 
-    public Note(String description, String id) {
+    public Note(String description, String id,long timeStamp) {
         this.id = id;
         this.description = description;
-        this.timeStamp = System.currentTimeMillis() / 1000;
+        this.timeStamp=timeStamp;
     }
 
     public Note() {
