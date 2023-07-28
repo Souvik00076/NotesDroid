@@ -19,7 +19,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     public interface rvListener {
         void onClick(Note note);
 
-        void onDelete();
+        void onDelete(Note note);
     }
 
     private rvListener listener;
@@ -43,9 +43,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
     public void onBindViewHolder(@NonNull NoteAdapter.NoteHolder holder, int position) {
 
         String description = list.get(position).getDescription();
-        //long time = Long.parseLong(list.get(position).getTime());
+        long time = list.get(position).getTimeStamp();
+        String date = DateExtraction.generateDateString(time);
         holder.descriptionView.setText(description);
-        holder.timeView.setText("7.12.12");
+        holder.timeView.setText(date);
     }
 
     public void setDataSet(ArrayList<Note> dataSet) {
@@ -57,7 +58,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
         return list.size();
     }
 
-    class NoteHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class NoteHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
         public TextView descriptionView, timeView;
         public rvListener listener;
 
@@ -67,11 +68,18 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
             timeView = itemView.findViewById(R.id.time_tv);
             this.listener = listener;
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             listener.onClick(list.get(getAdapterPosition()));
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            listener.onDelete(list.get(getAdapterPosition()));
+            return true;
         }
     }
 }
